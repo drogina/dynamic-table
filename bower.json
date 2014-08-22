@@ -1,0 +1,14 @@
+{
+  "name": "angular-base",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "html5-boilerplate": "~4.3.0",
+    "angular-base64": "2.0.1",
+    "angular-bootstrap": "0.11.x",
+    "angular-ui-utils": "0.1.x"
+  }
+}
