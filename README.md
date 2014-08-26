@@ -1,4 +1,10 @@
-angular-base-atomify
-====================
+##dynamic-table
 
-Basic angular app structure for using atomify
+First go around working with ng-table
+
+#####To run locally:
+
+  ```
+  npm install
+  npm start
+  ```
