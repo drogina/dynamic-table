@@ -2,65 +2,44 @@
 
 <div>
 
-<!-- 	<input type="radio" ng-model="group" value="name">Name<br/>
-	<input type="radio" ng-model="group" value="age">Age<br/>
-	<input type="radio" ng-model="group" value="gender">Gender<br/>
-	<input type="radio" ng-model="group" value="job">Job<br/>
- -->
-
 	Group by:
 	<select ng-model="groupby">
-		<option value="name">Name</option>
-		<option value="age">Age</option>
-		<option value="gender">Gender</option>
-		<option value="job">Job</option>
+		<option value="homeTeam">Home Team</option>
+		<option value="awayTeam">Away Team</option>
+		<option value="date">Date</option>
+		<option value="gameType">Game Type</option>
 	</select>
 	<br>
 
-	Grouped by: <b>{{groupby}}</b>
-
-	<table ng-table="tableParams" class="table">
-		<tbody ng-repeat="group in $groups">
-			<tr class="ng-table-group">
-				<td colspan="{{$columns.length}}">
-					<a href="" ng-click="group.$hideRows = !group.$hideRows">
-						<span class="fa" ng-class="{ 'fa-chevron-right': group.$hideRows, 'fa-chevron-down': !group.$hideRows }"></span>
-						<strong>{{ group.value }}</strong>
-					</a>
-				</td>
-			</tr>
-			<tr ng-hide="group.$hideRows" ng-repeat="user in group.data">
-				<td sortable="name" data-title="'Name'">
-					{{user.name}}
-				</td>
-				<td sortable="age" data-title="'Age'">
-					{{user.age}}
-				</td>
-				<td sortable="name" data-title="'Gender'">
-					{{user.gender}}
-				</td>
-				<td sortable="name" data-title="'Job'">
-					{{user.job}}
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-<!-- 		<thead>
-			<th>Name</th>
-			<th>Age</th>
-			<th>Gender</th>
-			<th>Job</th>
-		</thead>
-		<tbody ng-repeat="datum in data | orderBy:group">
-
-			<tr>
-				<td>{{datum.name}}</td>
-				<td>{{datum.age}}</td>
-				<td>{{datum.gender}}</td>
-				<td>{{datum.job}}</td>
-			</tr>
-		</tbody> -->
-	</table>
+	<button ng-click="reloadTable()" class="btn btn-default">Reload</button>
+	<div class="clearfix"></div>
+	<div loading-container="tableParams.settings().$loading">
+		<table ng-table="tableParams" show-filter="true" class="table table-striped">
+			<tbody ng-repeat="group in $groups">
+				<tr class="ng-table-group">
+					<td colspan="{{$columns.length}}">
+						<a href="" ng-click="group.$hideRows = !group.$hideRows">
+							<span class="fa" ng-class="{ 'fa-chevron-right': group.$hideRows, 'fa-chevron-down': !group.$hideRows }"></span>
+							<strong>{{ group.value | date: 'EEE, MMM d, yyyy'}}</strong>
+						</a>
+					</td>
+				</tr>
+				<tr ng-hide="group.$hideRows" ng-repeat="game in group.data">
+					<td sortable="'homeTeam'" data-title="'Home Team'">
+						{{game.homeTeam}}
+					</td>
+					<td sortable="'awayTeam'" data-title="'Away Team'">
+						{{game.awayTeam}}
+					</td>
+					<td sortable="'date'" data-title="'Date'">
+						{{game.date | date: 'EEE, MMM d, yyyy'}}
+					</td>
+					<td sortable="'gameType'" data-title="'Game Type'">
+						{{game.gameType}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 </div>
